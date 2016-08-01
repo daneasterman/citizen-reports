@@ -6,4 +6,7 @@
     storageBucket: "popping-heat-1609.appspot.com",
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+
     
