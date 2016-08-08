@@ -1,0 +1,14 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/0.10.33/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.4
+[debug] Platform:     darwin
+[debug] Node Version: v4.2.1
+[debug] Time:         Mon Aug 08 2016 13:19:16 GMT+0100 (BST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan14/Dropbox/01 FREE TIME STUFF/01 WEB DEVELOPMENT/01-journozen-basic-send
+[info] Public Directory: ./
+[info] 
+[info] Server listening at: http://localhost:5000
