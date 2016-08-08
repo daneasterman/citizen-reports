@@ -11,24 +11,26 @@ function saveGeoLocation() {
 }
 
 function saveTextData() {
-  var title = $('#new-post-title').val();
-  var msg = $('#new-post-message').val();
-
-  reportData.title = title;
-  reportData.msg = msg;
+  reportData.title = $('#new-post-title').val();
+  reportData.msg = $('#new-post-message').val();
 }
 
 function sendToDB() {
   firebase.database().ref('reports/').push(reportData);
 }
 
-$(function(){
-  saveGeoLocation();
-  saveTextData();
-});
+function submitReport() {
+  $('#submit-report').click(function(e) {
+    e.preventDefault();
+    saveTextData();
+    sendToDB();
+  });
+}
 
-$('#submit-report').click(function(e) {
-  e.preventDefault();
-  console.log("Submit Report button clicked!");
-  sendToDB();
-});
+$(function() {
+  // Geolocation saved in background on doc load
+    saveGeoLocation();
+    // Register submit report click handler on doc locad
+    submitReport();
+  });
+
