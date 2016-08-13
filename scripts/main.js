@@ -4,23 +4,35 @@
 var reportData = {};
 
 function init() {
-  // Register submit report click handler on doc locad
+  // Register submit click handlers on doc locad
   submitReport();
-  // Geolocation saved in reportData object on doc load
-  saveGeoLocation();
+  // submitGeoData();
   // Check for new items added to DB on every refresh (may need to do api ajax call in future)
   retrieveFromDB();
+  // Geolocation saved in reportData object on doc load
+  // saveGeoLocation();
 }
 
-function saveGeoLocation() {
+function getCurrentPosition() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      reportData.timestamp = position.timestamp;
-      reportData.lat = position.coords.latitude;
-      reportData.lng = position.coords.longitude;
-    });
+    navigator.geolocation.getCurrentPosition(geoSuccess);
+  } else {
+    alert("Sorry, you do not have geolocation enabled for your browser");
   }
 }
+
+function geoSuccess(position) {
+  reportData.lat = position.coords.latitude;
+  reportData.lng = position.coords.longitude;
+  // console.log(reportData);
+}
+
+// function submitGeoData() {
+  $('#submit-report').click(function(e) {
+    e.preventDefault();
+    getCurrentPosition();
+  });
+// }
 
 function saveTextData() {
   reportData.title = $('#new-post-title').val();
@@ -54,4 +66,3 @@ function addReportElement(lng) {
 $(function() {
   init();
 });
-
