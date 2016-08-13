@@ -1,13 +1,13 @@
-// CitzenReports app
 // Global report data object to save to Firebase DB.
 var reportData = {};
 
+// On Document Refresh
 function init() {
-  getCurrentPosition()
-  // Register submit click handlers on doc locad
-  submitReport();  
-  // Check for new items added to DB on every refresh (may need to do api ajax call in future)
-  retrieveFromDB();  
+  getCurrentPosition();
+  // Click handler registered
+  submitReport();
+  // Check for new items added to DB
+  retrieveFromDB();
 }
 
 function getCurrentPosition() {
@@ -21,7 +21,6 @@ function getCurrentPosition() {
 function saveGeoData(position) {
   reportData.lat = position.coords.latitude;
   reportData.lng = position.coords.longitude;
-  // console.log(reportData);
 }
 
 function saveTextData() {

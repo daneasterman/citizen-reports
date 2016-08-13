@@ -5,20 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- <meta name="description" content="Basic version of JournoZen app"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JournoZen Basic Send</title>
+  <title>Citizen Reports</title>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="CitizenReports">
+  <meta name="application-name" content="Citizen Reports">
   <meta name="theme-color" content="#303F9F">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="CitizenReports">
+  <meta name="apple-mobile-web-app-title" content="Citizen Reports">
   <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
 
   <!-- Tile icon for Win8 -->
@@ -34,12 +34,13 @@
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
   <!-- Initialize Firebase   -->
-  <script>    
+  <script>
+    // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyCGqWqd0emUfAGcVdmujzQzcX6VN3a4_GA",
-      authDomain: "very-basic-send-data.firebaseapp.com",
-      databaseURL: "https://very-basic-send-data.firebaseio.com",
-      storageBucket: "",
+      apiKey: "AIzaSyCHNB7UQmDx6vhuhhQ3uKe03yVvwRhTeME",
+      authDomain: "popping-heat-1609.firebaseapp.com",
+      databaseURL: "https://popping-heat-1609.firebaseio.com",
+      storageBucket: "popping-heat-1609.appspot.com",
     };
     firebase.initializeApp(config);
   </script>
@@ -56,15 +57,15 @@
       
       <!-- Start Header section containing logo and menu -->
       <header>
-          <h3 class="logo">CitizenReports</h3>
+          <h3 class="logo">Citizen Reports</h3>
           
           <button id="sign-out-button" class="sign-out-button">Sign out</button>          
           <!-- Navigation Bar -->
           <div id="menu-my-posts" class="menu-my-posts">
-            <i class="material-icons">home</i> My posts
+            <i class="material-icons">home</i> My reports
           </div>          
           <div id="menu-recent" class="menu-recent">
-            <i class="material-icons">new_releases</i> Recent
+            <i class="material-icons">new_releases</i> Recent reports
           </div>
          
       </header>
@@ -73,17 +74,12 @@
 
         <!-- Show the add post form -->
         <section class="add-post" id="add-post">              
-          <h2 class="title-text">New Post</h2>
+          <h2 class="form-title">New Report</h2>
             
-              <form id="jzen-form" action="#">
-
-                <div class="input-wrapper">
-                  <label class="textfield-label" for="new-post-title">Post Title</label>
-                  <input id="new-post-title" type="text" >
-                </div>
+              <form id="report-form" action="#">                
 
                 <div class="textarea-wrapper">
-                  <label class="textfield-label" for="new-post-message">Post Message</label>   
+                  <label class="textfield-label" for="new-post-message">Report Message</label>   
                   <textarea id="new-post-message" rows="3" ></textarea>
                 </div>                
                 <button id="submit-report" class="submit-report">Send Report</button>
@@ -96,7 +92,7 @@
       <!-- Show the list of user's posts -->
       <section class="user-posts-list" id="user-posts-list" style="display:none"></section>
     
-    </main>  
+    </main>
 
 </body>
 
