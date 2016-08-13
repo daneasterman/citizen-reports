@@ -1,38 +1,28 @@
 // CitzenReports app
-
 // Global report data object to save to Firebase DB.
 var reportData = {};
 
 function init() {
+  getCurrentPosition()
   // Register submit click handlers on doc locad
-  submitReport();
-  // submitGeoData();
+  submitReport();  
   // Check for new items added to DB on every refresh (may need to do api ajax call in future)
-  retrieveFromDB();
-  // Geolocation saved in reportData object on doc load
-  // saveGeoLocation();
+  retrieveFromDB();  
 }
 
 function getCurrentPosition() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(geoSuccess);
+    navigator.geolocation.getCurrentPosition(saveGeoData);
   } else {
     alert("Sorry, you do not have geolocation enabled for your browser");
   }
 }
 
-function geoSuccess(position) {
+function saveGeoData(position) {
   reportData.lat = position.coords.latitude;
   reportData.lng = position.coords.longitude;
   // console.log(reportData);
 }
-
-// function submitGeoData() {
-  $('#submit-report').click(function(e) {
-    e.preventDefault();
-    getCurrentPosition();
-  });
-// }
 
 function saveTextData() {
   reportData.title = $('#new-post-title').val();
