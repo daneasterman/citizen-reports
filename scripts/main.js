@@ -6,7 +6,7 @@ function init() {
   getCurrentPosition();
   // Click handler registered
   submitReport();
-  // Check for new items added to DB
+  // Check for new items added to DB on refresh
   retrieveFromDB();
 }
 
@@ -24,8 +24,8 @@ function saveGeoData(position) {
 }
 
 function saveTextData() {
-  reportData.title = $('#new-post-title').val();
-  reportData.msg = $('#new-post-message').val();
+  // reportData.title = $('#new-post-title').val();
+  reportData.msg = $('#new-report-message').val();
 }
 
 function sendToDB() {
