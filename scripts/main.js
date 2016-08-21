@@ -52,6 +52,35 @@ function addReportElement(lng) {
   $('.recent-reports').append('<p>'+lng+'</p>');
 }
 
+// USER AUTHENTICATION
+
+$('#sign-in').click(function(){
+  console.log("sign in clicked");
+  //var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInAnonymously();
+});
+
+$('#sign-out').click(function() {
+  console.log("sign out clicked");
+  alert("User signed out!");
+  firebase.auth().signOut();
+});
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    alert("User signed-in!");
+    writeUserData(user.uid);
+  } else {
+    // display splash
+  }
+});
+
+function writeUserData(userId) {
+  firebase.database().ref('users/' + userId).set({
+    userId: userId
+  });
+}
+
 $(function() {
   init();
 });
