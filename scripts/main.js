@@ -30,19 +30,20 @@ function saveTextData() {
 
 function sendToDB() {
   firebase.database().ref('reports/').push(reportData);
+  firebase.database().ref('user-reports/' + reportData.user).push(reportData);
 }
 
 function submitReport() {
   $('#submit-report').click(function(e) {
     e.preventDefault();
-    console.log("Button clicked!");
+    console.log("Submit Report clicked!");
     saveTextData();
     sendToDB();
   });
 }
 
 function retrieveFromDB() {
-  var reportsRef = firebase.database().ref('reports/').limitToLast(200);
+  var reportsRef = firebase.database().ref('reports/').limitToLast(100);
   reportsRef.on('child_added', function(data) {
    addReportElement(data.val().lng);
   });
@@ -56,7 +57,6 @@ function addReportElement(lng) {
 
 $('#sign-in').click(function(){
   console.log("sign in clicked");
-  //var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInAnonymously();
 });
 
@@ -70,6 +70,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     alert("User signed-in!");
     writeUserData(user.uid);
+    reportData.user = user.uid;
   } else {
     // display splash
   }
@@ -80,6 +81,7 @@ function writeUserData(userId) {
     userId: userId
   });
 }
+// writeUserData(user.uid);
 
 $(function() {
   init();
