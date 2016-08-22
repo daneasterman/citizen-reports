@@ -5,9 +5,10 @@ function init() {
   // Check for new items added to DB on refresh
   retrieveFromDB();
   getCurrentPosition();
-  // Register click handler functions  
+  // Register event handler functions  
   signIn();
   signOut();
+  authStateChange();
   submitReport();
 }
 
