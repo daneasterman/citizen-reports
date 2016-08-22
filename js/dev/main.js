@@ -29,8 +29,15 @@ function saveTextData() {
 }
 
 function sendToDB() {
-  firebase.database().ref('reports/').push(reportData);
-  firebase.database().ref('user-reports/' + reportData.user).push(reportData);
+  // firebase.database().ref('reports/').push(reportData);
+  // firebase.database().ref('user-reports/' + reportData.user).push(reportData);
+  var newReportKey = firebase.database().ref().child('reports').push().key;
+
+    var updates = {};
+    updates['/reports/' + newReportKey] = reportData;
+    updates['/user-reports/' + reportData.user + '/' + newReportKey] = reportData;
+
+    return firebase.database().ref().update(updates);
 }
 
 function submitReport() {
