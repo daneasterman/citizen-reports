@@ -1,15 +1,30 @@
 // Global report data object to save to Firebase DB.
 var reportData = {};
 
-// On Document Refresh
 function init() {
-  getCurrentPosition();
-  // Click handler registered
-  submitReport();
   // Check for new items added to DB on refresh
   retrieveFromDB();
+  getCurrentPosition();
+  // Register click handler functions  
+  signIn();
+  signOut();
+  submitReport();
 }
 
+// On Doc ready fire init
+$(function() {
+  init();
+});
+function retrieveFromDB() {
+  var reportsRef = firebase.database().ref('reports/').limitToLast(100);
+  reportsRef.on('child_added', function(data) {
+   addReportElement(data.val().lng);
+  });
+}
+
+function addReportElement(lng) {
+  $('.recent-reports').append('<p>'+lng+'</p>');
+}
 function getCurrentPosition() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(saveGeoData);
@@ -48,48 +63,35 @@ function submitReport() {
     sendToDB();
   });
 }
-
-function retrieveFromDB() {
-  var reportsRef = firebase.database().ref('reports/').limitToLast(100);
-  reportsRef.on('child_added', function(data) {
-   addReportElement(data.val().lng);
+function signIn() {
+  $('#sign-in').click(function(){
+    console.log("sign in clicked");
+    firebase.auth().signInAnonymously();
   });
 }
 
-function addReportElement(lng) {
-  $('.recent-reports').append('<p>'+lng+'</p>');
+function signOut() {
+  $('#sign-out').click(function() {
+    console.log("sign out clicked");
+    alert("User signed out!");
+    firebase.auth().signOut();
+  });
 }
 
-// USER AUTHENTICATION
-
-$('#sign-in').click(function(){
-  console.log("sign in clicked");
-  firebase.auth().signInAnonymously();
-});
-
-$('#sign-out').click(function() {
-  console.log("sign out clicked");
-  alert("User signed out!");
-  firebase.auth().signOut();
-});
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    alert("User signed-in!");
-    writeUserData(user.uid);
-    reportData.user = user.uid;
-  } else {
-    // display splash
-  }
-});
+function authStateChange() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      alert("User signed-in!");
+      writeUserData(user.uid);
+      reportData.user = user.uid;
+      } else {
+      // display splash
+    }
+  });
+}
 
 function writeUserData(userId) {
   firebase.database().ref('users/' + userId).set({
     userId: userId
   });
 }
-// writeUserData(user.uid);
-
-$(function() {
-  init();
-});
