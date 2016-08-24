@@ -84,7 +84,7 @@
                   <textarea id="new-report-message" rows="3" ></textarea>
                 </div>
 
-                <input type="file" id="input-image" accept="image/*">
+                <input type="file" id="input-image" onchange="uploadImage(this.files)" accept="image/*">
 
                 <button id="submit-report" class="submit-report">Send Report</button>
 

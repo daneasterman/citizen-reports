@@ -2,13 +2,15 @@
 var reportData = {};
 
 function init() {
+  // Get Lat/Lng on refresh
+  getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
-  getCurrentPosition();
   // Register event handler functions  
   signIn();
   signOut();
   authStateChange();
+  uploadImage();
   submitReport();
 }
 

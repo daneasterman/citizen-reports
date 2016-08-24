@@ -2,7 +2,7 @@
 var reportData = {};
 
 function init() {
-  // Get GPS Position on refreshn
+  // Get Lat/Lng on refresh
   getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
@@ -65,6 +65,21 @@ function submitReport() {
     saveTextData();
     sendToDB();
   });
+}
+function uploadImage() {
+
+  var hello = [];
+
+  var storageRef = firebase.storage().ref();
+  var imagesRef = storageRef.child('images');
+
+  var inputImage = $('#input-image');
+
+  inputImage.on('change', function(evt) {
+  var firstFile = evt.target.files[0]; // get the first file uploaded
+  var uploadTask = imagesRef.put(firstFile);
+  });
+
 }
 function signIn() {
   $('#sign-in').click(function(){
