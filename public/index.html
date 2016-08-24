@@ -1,69 +1,102 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Welcome to Firebase Hosting</title>
-    <style media="screen">
-      body {
-        font-family: Roboto, Arial, sans-serif;
-        background: #ECEFF1;
-        color: rgba(0,0,0,0.87);
-      }
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta name="description" content="Basic version of JournoZen app"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Reports</title>
 
-      a {
-        color: rgb(3,155,229);
-      }
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
 
-      #message {
-        max-width: 400px;
-        margin: 40px auto;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.14),0 2px 1px -1px rgba(0,0,0,0.12);
-        border-radius: 2px;
-        background: white;
-        padding: 16px 24px;
-      }
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Citizen Reports">
+  <meta name="theme-color" content="#303F9F">
 
-      #message h1 {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        margin: 0 0 16px;
-      }
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Citizen Reports">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
 
-      #message p {
-        font-weight: 300;
-        line-height: 150%;
-      }
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
 
-      #message ul {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        text-align: center;
-      }
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+  <link rel="stylesheet" href="styles.css">
 
-      #message li a {
-        display: inline-block;
-        padding: 8px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        background: rgb(3,155,229);
-        color: white;
-        border: 1px solid rgb(3,155,229);
-        border-radius: 3px;
-        font-size: 14px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
-    </style>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+  <!-- Initialize Firebase   -->
+  <script>
+    // Initialize Firebase - MAKE SECRET BEFORE GITHUB!!!
+    var config = {
+      apiKey: "AIzaSyCHNB7UQmDx6vhuhhQ3uKe03yVvwRhTeME",
+      authDomain: "popping-heat-1609.firebaseapp.com",
+      databaseURL: "https://popping-heat-1609.firebaseio.com",
+      storageBucket: "popping-heat-1609.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>  
   </head>
-  <body>
-    <div id="message">
-      <h1>Welcome to Firebase Hosting</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <ul>
-        <li><a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a></li>
-      </ul>
-    </div>
-  </body>
+  <body>   
+
+      <!-- Start splash page hidden for now -->
+      <section id="splash-page" class="splash-page" style="display:none">
+        <div>
+          <button id="sign-in-button" class="sign-in-button">Anonymous Sign-In</button>
+        </div>
+      </section>
+      
+      <!-- Start Header section containing logo and menu -->
+      <header>
+          <h3 class="logo">Citizen Reports</h3>
+
+          <button id="sign-in" class="sign-in">Sign In</button>
+          <button id="sign-out" class="sign-out">Sign Out</button>          
+                    
+          <!-- Navigation Bar -->
+          <div id="menu-my-posts" class="menu-my-posts">
+            <i class="material-icons">home</i> My reports
+          </div>          
+          <div id="menu-recent" class="menu-recent">
+            <i class="material-icons">new_releases</i> Recent reports
+          </div>
+         
+      </header>
+
+      <main class="main">
+
+        <!-- Show the add post form -->
+        <section class="add-post" id="add-post">              
+          <h2 class="form-title">New Report</h2>
+            
+              <form id="report-form" action="#">                
+
+                <div class="textarea-wrapper">
+                  <label class="textfield-label" for="new-report-message">Report Message</label>   
+                  <textarea id="new-report-message" rows="3" ></textarea>
+                </div>
+
+                <input type="file" id="take-picture" accept="image/*">
+
+                <button id="submit-report" class="submit-report">Send Report</button>
+
+              </form>          
+        </section>
+
+      <!-- Show a list of recent posts -->
+      <section class="recent-reports"></section>
+      <!-- Show the list of user's posts -->
+      <section class="user-posts-list" id="user-posts-list" style="display:none"></section>
+    
+    </main>
+    <script src="../js/main.min.js"></script>
+</body>
 </html>

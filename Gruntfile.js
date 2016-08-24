@@ -7,13 +7,13 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: 'js/dev/*.js', // All JS in the dev folder                        
-                dest: 'js/prod/main.js'
+                dest: 'js/concat/main.js'
             }
         },
         uglify: {
             build: {
-                src: 'js/prod/main.js',
-                dest: 'js/prod/main.min.js'
+                src: 'js/concat/main.js',
+                dest: 'public/js/main.min.js'
             }
         },
         watch: {
