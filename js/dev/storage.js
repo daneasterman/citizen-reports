@@ -1,7 +1,5 @@
 function uploadImage() {
 
-  var hello = [];
-
   var storageRef = firebase.storage().ref();
   var imagesRef = storageRef.child('images');
 

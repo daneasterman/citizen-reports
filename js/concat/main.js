@@ -68,8 +68,6 @@ function submitReport() {
 }
 function uploadImage() {
 
-  var hello = [];
-
   var storageRef = firebase.storage().ref();
   var imagesRef = storageRef.child('images');
 
@@ -81,6 +79,7 @@ function uploadImage() {
   });
 
 }
+
 function signIn() {
   $('#sign-in').click(function(){
     console.log("sign in clicked");
