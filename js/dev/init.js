@@ -6,11 +6,11 @@ function init() {
   getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
+  // initMap();
   // Register event handler functions  
   signIn();
   signOut();
   authStateChange();
-  uploadImage();
   submitReport();
 }
 

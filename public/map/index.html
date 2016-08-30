@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Citizen Reports Real Time Map</title>
+
+  <style type="text/css">
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 100%; }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script> 
+
+  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+
+  <script>
+    // Initialize Firebase - MAKE SECRET BEFORE GITHUB OR PUBLIC DEPLOY!!!
+    var config = {
+      apiKey: "AIzaSyCHNB7UQmDx6vhuhhQ3uKe03yVvwRhTeME",
+      authDomain: "popping-heat-1609.firebaseapp.com",
+      databaseURL: "https://popping-heat-1609.firebaseio.com",
+      storageBucket: "popping-heat-1609.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script> 
+   
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClhudcJZg8QuwPOtx_QJS8uvNYc4uTTnM&libraries=visualization"></script>
+
+  <script src="../js/consumer-map.js"></script>
+  
+</body>
+</html>

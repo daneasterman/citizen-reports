@@ -6,11 +6,11 @@ function init() {
   getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
+  // initMap();
   // Register event handler functions  
   signIn();
   signOut();
   authStateChange();
-  uploadImage();
   submitReport();
 }
 
@@ -66,19 +66,47 @@ function submitReport() {
     sendToDB();
   });
 }
-function uploadImage() {
+var storageRef = firebase.storage().ref();
 
-  var storageRef = firebase.storage().ref();
-  var imagesRef = storageRef.child('images');
+function uploadImage(evt) {
+
+  // evt.stopPropagation();
+  // evt.preventDefault();
+  var file = evt.target.files[0];
+
+  var metadata = {
+    'contentType': file.type
+  };
+
+  // Push to child path.
+  var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
   var inputImage = $('#input-image');
 
-  inputImage.on('change', function(evt) {
-  var firstFile = evt.target.files[0]; // get the first file uploaded
-  var uploadTask = imagesRef.put(firstFile);
-  });
+  uploadTask.on('state_changed', null, function(error) {
+    console.error('Upload failed:', error);
+  }, function() {
+    
+    var url = uploadTask.snapshot.metadata.downloadURLs[0];
+    $('.img-container').append('<img class="uploaded-img" src="'+url+'" >');
+    reportData.img = url;
+
+    console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
+    console.log(uploadTask.snapshot.metadata);
+    console.log('File available at', url);
+
+  }); // end anon function after uploadTask
 
 }
+
+window.onload = function() {
+  document.getElementById('file').addEventListener('change', uploadImage, false);
+};
+
+// inputImage.on('change', function(evt) {
+// var firstFile = evt.target.files[0]; // get the first file uploaded
+// var uploadTask = imagesRef.put(firstFile);
+// });
 
 function signIn() {
   $('#sign-in').click(function(){
