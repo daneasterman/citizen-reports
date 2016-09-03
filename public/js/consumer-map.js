@@ -8,22 +8,23 @@ function initMap() {
  }
 
  function retrieveMarker(map) {
-    // var bounds = new google.maps.LatLngBounds();
+    var bounds = new google.maps.LatLngBounds();
 
-    var userReportsRef = firebase.database().ref('user-reports/');
+    var userReportsRef = firebase.database().ref('reports/');
     userReportsRef.on('child_added', function(snapshot, prevChildKey) {
-
-      var val = snapshot.val();
-      //var lng = snapshot.val().lng;
-      console.log(val);
+      
+      var lng = snapshot.val().lng;
+      var lat = snapshot.val().lat;
+      // console.log(val);
       // console.log(lng);
-      // var msg = snapshot.val().msg;
+      var msg = snapshot.val().msg;
 
-      // var latLng = new google.maps.LatLng(lat, lng);
-      // var marker = new google.maps.Marker({ position: latLng, map: map});
+      var latLng = new google.maps.LatLng(lat, lng);
+      
+      var marker = new google.maps.Marker({ position: latLng, map: map});
 
-      // bounds.extend(marker.position);
-      // map.fitBounds(bounds);
+      bounds.extend(marker.position);
+      map.fitBounds(bounds);
       
       marker.addListener('click', function() {
         iw = new google.maps.InfoWindow();
