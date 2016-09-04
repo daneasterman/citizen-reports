@@ -15,8 +15,7 @@ function initMap() {
       
       var lng = snapshot.val().lng;
       var lat = snapshot.val().lat;
-      // console.log(val);
-      // console.log(lng);
+      
       var msg = snapshot.val().msg;
 
       var latLng = new google.maps.LatLng(lat, lng);
