@@ -18,6 +18,7 @@ function init() {
 $(function() {
   init();
 });
+var jic={compress:function(t,e,n){var a="image/jpeg";"undefined"!=typeof n&&"png"==n&&(a="image/png");var r=document.createElement("canvas");r.width=t.naturalWidth,r.height=t.naturalHeight;var o=(r.getContext("2d").drawImage(t,0,0),r.toDataURL(a,e/100)),s=new Image;return s.src=o,s},upload:function(t,e,n,a,r,o,s,i){void 0===XMLHttpRequest.prototype.sendAsBinary&&(XMLHttpRequest.prototype.sendAsBinary=function(t){var e=Array.prototype.map.call(t,function(t){return 255&t.charCodeAt(0)});this.send(new Uint8Array(e).buffer)});var p="image/jpeg";".png"==a.substr(-4)&&(p="image/png");var u=t.src;u=u.replace("data:"+p+";base64,","");var d=new XMLHttpRequest;d.open("POST",e,!0);var c="someboundary";if(d.setRequestHeader("Content-Type","multipart/form-data; boundary="+c),i&&"object"==typeof i)for(var f in i)d.setRequestHeader(f,i[f]);s&&s instanceof Function&&(d.upload.onprogress=function(t){t.lengthComputable&&s(t.loaded/t.total*100)}),d.sendAsBinary(["--"+c,'Content-Disposition: form-data; name="'+n+'"; filename="'+a+'"',"Content-Type: "+p,"",atob(u),"--"+c+"--"].join("\r\n")),d.onreadystatechange=function(){4==this.readyState&&(200==this.status?r(this.responseText):this.status>=400&&o&&o instanceof Function&&o(this.responseText))}}};
 function retrieveFromDB() {
   var reportsRef = firebase.database().ref('reports/').limitToLast(100);
   reportsRef.on('child_added', function(data) {
@@ -87,41 +88,42 @@ function submitReport() {
     sendToDB();
   });
 }
-function uploadImage(evt) {
-  
-  var source_img = evt.target.files[0];
-      target_img = $('.target_img');
+// function uploadImage(evt) {
 
-  var metadata = {
-    'contentType': file.type
-  };
+  var source_img = document.getElementById('source_img').files[0];
+  
+      target_img = document.getElementById("target_img");
+
+  // var metadata = {
+  //   'contentType': file.type
+  // };
 
   var quality = 80,
   output_format = 'jpg',
-  // target_img.src = 
+  target_img = jic.compress(source_img,quality,output_format).src;
 
   // Push to child path.
-  uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+//   uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
-  uploadTask.on('state_changed', null, function(error) {
-    console.error('Upload failed:', error);
-  }, function() {
+//   uploadTask.on('state_changed', null, function(error) {
+//     console.error('Upload failed:', error);
+//   }, function() {
     
-    var url = uploadTask.snapshot.metadata.downloadURLs[0];
-    $('.img-container').append('<img class="uploaded-img" src="'+url+'" >');
-    reportData.img = url;
+//     var url = uploadTask.snapshot.metadata.downloadURLs[0];
+//     $('.img-container').append('<img class="uploaded-img" src="'+url+'" >');
+//     reportData.img = url;
 
-    console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
-    console.log(uploadTask.snapshot.metadata);
-    console.log('File available at', url);
+//     console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
+//     console.log(uploadTask.snapshot.metadata);
+//     console.log('File available at', url);
 
-  }); // end anon function after uploadTask
+//   }); // end anon function after uploadTask
 
-}
+// }
 
-window.onload = function() {
-  document.getElementById('file').addEventListener('change', uploadImage, false);
-};
+// window.onload = function() {
+//   document.getElementById('file').addEventListener('change', uploadImage, false);
+// };
 
 // inputImage.on('change', function(evt) {
 // var firstFile = evt.target.files[0]; // get the first file uploaded
