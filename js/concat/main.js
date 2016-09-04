@@ -87,20 +87,21 @@ function submitReport() {
     sendToDB();
   });
 }
-var storageRef = firebase.storage().ref();
-
 function uploadImage(evt) {
-
-  // evt.stopPropagation();
-  // evt.preventDefault();
-  var file = evt.target.files[0];
+  
+  var source_img = evt.target.files[0];
+      target_img = $('.target_img');
 
   var metadata = {
     'contentType': file.type
   };
 
+  var quality = 80,
+  output_format = 'jpg',
+  // target_img.src = 
+
   // Push to child path.
-  var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+  uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
   uploadTask.on('state_changed', null, function(error) {
     console.error('Upload failed:', error);
