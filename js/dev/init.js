@@ -6,8 +6,7 @@ function init() {
   getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
-  // initMap();
-  // Register event handler functions  
+  callImgCompress();
   signIn();
   signOut();
   authStateChange();

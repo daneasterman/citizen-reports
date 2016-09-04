@@ -1,17 +1,9 @@
-// function uploadImage(evt) {
-
-  var source_img = document.getElementById('source_img').files[0];
-  
-      target_img = document.getElementById("target_img");
+// function uploadImage(evt) { 
 
   // var metadata = {
   //   'contentType': file.type
   // };
-
-  var quality = 80,
-  output_format = 'jpg',
-  target_img = jic.compress(source_img,quality,output_format).src;
-
+  
   // Push to child path.
 //   uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
