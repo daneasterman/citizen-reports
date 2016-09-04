@@ -13,8 +13,6 @@ function uploadImage(evt) {
   // Push to child path.
   var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
-  var inputImage = $('#input-image');
-
   uploadTask.on('state_changed', null, function(error) {
     console.error('Upload failed:', error);
   }, function() {
