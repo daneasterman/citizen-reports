@@ -59,7 +59,9 @@ function render(src) {
 
   function sendImage(blob) {
 
-    uploadTask = storageRef.child('images/testImage4.jpeg').put(blob);
+    var counter = i++;
+
+    uploadTask = storageRef.child('images/testImage"'+counter+'".jpeg').put(blob);
 
     uploadTask.on('state_changed', null, function(error) {
       console.error('Upload failed:', error);

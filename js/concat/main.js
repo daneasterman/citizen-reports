@@ -26,7 +26,7 @@ window.onload = function() {
 };
 
 // GLOBAL
-var MAX_HEIGHT = 200;
+var MAX_HEIGHT = 250;
 
 function render(src) {
   
@@ -59,7 +59,9 @@ function render(src) {
 
   function sendImage(blob) {
 
-    uploadTask = storageRef.child('images/testImage4.jpeg').put(blob);
+    var counter = i++;
+
+    uploadTask = storageRef.child('images/testImage"'+counter+'".jpeg').put(blob);
 
     uploadTask.on('state_changed', null, function(error) {
       console.error('Upload failed:', error);
@@ -79,24 +81,6 @@ function render(src) {
   $('#upload-img').click(function() {
     saveAsBlob();
   });
-
-// }
-
-// function saveImgUrl(url) {
-//   reportData.img = url;
-// }
-
-// imageData: encodeURIComponent(document.getElementById("canvas").toDataURL("image/png"))
-
-// function imgDropTarget() {
-
-//   var target = document.getElementById("drop-target");
-//   target.addEventListener("dragover", function(e){e.preventDefault();}, true);
-//   target.addEventListener("drop", function(e){
-//     e.preventDefault();
-//     loadImage(e.dataTransfer.files[0]);
-//   }, true);
-// }
 // Global report data object to save to Firebase DB.
 var reportData = {};
 
