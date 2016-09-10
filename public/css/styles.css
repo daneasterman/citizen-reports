@@ -1,4 +1,31 @@
-#source_img {
+/*#source_img {
   width: 20%;
   height: auto;
+  }*/
+
+  #preview-row {
+    position: relative;
+    width: auto;
+    padding: 12px;
+    border: 1px solid #ccc;
+  }
+
+  #drop-target {
+   position: absolute;
+   top: 12px;
+   left: 12px;
+   width: auto;
+   height: 200px;
+   background-color: #eee;
+   border: 1px solid #ccc;
+   text-align: center;
+   padding: 12px;
+ }
+
+ #preview {
+  margin-left: 148px;  
+  background-color: #eee;
+  padding: 12px;
+  border: 1px solid #ccc;
+  height: 200px;
 }

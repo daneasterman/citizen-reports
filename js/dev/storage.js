@@ -1,10 +1,10 @@
-// function uploadImage(evt) { 
+// function uploadImage(evt) {
 
-  // var metadata = {
-  //   'contentType': file.type
-  // };
+//   var metadata = {
+//     'contentType': file.type
+//   };
   
-  // Push to child path.
+//   // Push to child path.
 //   uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
 //   uploadTask.on('state_changed', null, function(error) {
@@ -27,7 +27,7 @@
 //   document.getElementById('file').addEventListener('change', uploadImage, false);
 // };
 
-// inputImage.on('change', function(evt) {
-// var firstFile = evt.target.files[0]; // get the first file uploaded
-// var uploadTask = imagesRef.put(firstFile);
-// });
+// // inputImage.on('change', function(evt) {
+// // var firstFile = evt.target.files[0]; // get the first file uploaded
+// // var uploadTask = imagesRef.put(firstFile);
+// // });

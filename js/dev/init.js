@@ -6,10 +6,11 @@ function init() {
   getCurrentPosition();
   // Check for new items added to DB on refresh
   retrieveFromDB();
-  callImgCompress();
   signIn();
   signOut();
   authStateChange();
+  // imgDropTarget();
+  // inputImgFile();
   submitReport();
 }
 

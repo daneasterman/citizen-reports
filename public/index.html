@@ -84,17 +84,11 @@
                   <textarea id="new-report-message" rows="3" ></textarea>
                 </div>
 
-                
+                <button id="upload-img">Upload Image</button>
 
                 <button id="submit-report" class="submit-report">Send Report</button>
 
-              </form>
-
-              <button id="submit-report" class="submit-report">Send Report</button>
-
-              <img id="source_img" src="../img/profile.jpeg">
-
-              <img id="target_img" src="">
+              </form>           
 
               
 
@@ -102,9 +96,27 @@
         </section>
 
       <!-- Show a list of recent posts -->
-      <section class="recent-reports"></section>
+      <section class="recent-reports">
+        
+
+      </section>
       <!-- Show the list of user's posts -->
-      <section class="user-posts-list" id="user-posts-list" style="display:none"></section>
+      <section class="user-posts-list" id="user-posts-list" style="display:none">       
+      </section>
+
+
+    <div id="preview-row">
+      
+      <!-- <div id="drop-target">Drop image file here.</div> -->
+      <input type="file" id="imgFile" name="file"/>
+      
+      <div id="preview" style="width: 300px;">
+        <canvas id="myCanvas"></canvas>
+
+        <div class="img-container"></div>
+
+      </div>
+    </div>
     
     </main>
     

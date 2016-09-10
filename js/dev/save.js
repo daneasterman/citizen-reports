@@ -20,7 +20,7 @@ function saveGeoData(position) {
 
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
-};
+}
 
 function saveTextData() {
   // reportData.title = $('#new-post-title').val();
