@@ -46,6 +46,12 @@ function render(src) {
   image.src = src;
 }
 
+// register in doc refresh init
+function imgCounter() {
+  
+
+}
+
 // function sendImage() {
 
   function saveAsBlob() {
@@ -59,10 +65,7 @@ function render(src) {
 
   function sendImage(blob) {
 
-    var i = 1;
-    var counter = i++;
-
-    uploadTask = storageRef.child('images/testImage"'+counter+'".jpeg').put(blob);
+    uploadTask = storageRef.child('images/image-number'+imgCounter+'.jpeg').put(blob);
 
     uploadTask.on('state_changed', null, function(error) {
       console.error('Upload failed:', error);

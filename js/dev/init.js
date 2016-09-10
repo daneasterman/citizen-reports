@@ -17,4 +17,5 @@ function init() {
 // On Doc ready fire init
 $(function() {
   init();
+
 });
