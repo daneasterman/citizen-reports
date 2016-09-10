@@ -59,6 +59,7 @@ function render(src) {
 
   function sendImage(blob) {
 
+    var i = 1;
     var counter = i++;
 
     uploadTask = storageRef.child('images/testImage"'+counter+'".jpeg').put(blob);
