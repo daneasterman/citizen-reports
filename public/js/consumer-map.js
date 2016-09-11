@@ -48,7 +48,7 @@
 
     // Check if notification permissions have already been granted
     else if (Notification.permission === "granted") {
-      var n = new Notification('Citizen Reports: Click to Show Real Time Incident Map', {
+      var n = new Notification('Latest Citizen Report: Click to Show Real Time Incident Map', {
          body: msg
        });
       n.onclick = function() {
