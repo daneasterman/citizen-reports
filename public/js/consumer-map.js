@@ -10,8 +10,8 @@ function initMap() {
  function retrieveMarker(map) {
     var bounds = new google.maps.LatLngBounds();
 
-    var userReportsRef = firebase.database().ref('reports/');
-    userReportsRef.on('child_added', function(snapshot, prevChildKey) {
+    var reportsRef = firebase.database().ref('reports/');
+    reportsRef.on('child_added', function(snapshot, prevChildKey) {
       
       var lng = snapshot.val().lng;
       var lat = snapshot.val().lat;

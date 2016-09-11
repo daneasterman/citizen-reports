@@ -1,3 +1,6 @@
+//  BELOW FOR REVIEW:
+// ================
+
 // function uploadImage(evt) {
 
 //   var metadata = {

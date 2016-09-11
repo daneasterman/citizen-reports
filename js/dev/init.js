@@ -9,13 +9,10 @@ function init() {
   signIn();
   signOut();
   authStateChange();
-  // imgDropTarget();
-  // inputImgFile();
   submitReport();
 }
 
 // On Doc ready fire init
 $(function() {
   init();
-
 });

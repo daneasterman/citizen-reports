@@ -1,3 +1,5 @@
+var imgCount = 0;
+
 var storageRef = firebase.storage().ref();
 
 function loadImage(src){
@@ -46,31 +48,17 @@ function render(src) {
   image.src = src;
 }
 
-// register in doc refresh init
-function imgCounter() {
-  
+function sendCanvasImage(imgCount) {
 
-}
+  var finalCanvas = document.getElementById("myCanvas");
 
-// function sendImage() {
-
-  function saveAsBlob() {
-
-    var finalCanvas = document.getElementById("myCanvas");
-
-    finalCanvas.toBlob(function(blob) {
-      sendImage(blob);
-    }, "image/jpeg", 0.90);
-  }
-
-  function sendImage(blob) {
-
-    uploadTask = storageRef.child('images/image-number'+imgCounter+'.jpeg').put(blob);
+  finalCanvas.toBlob(function(blob) {
+    uploadTask = storageRef.child('images/image-number'+imgCount+'.jpeg').put(blob);
 
     uploadTask.on('state_changed', null, function(error) {
       console.error('Upload failed:', error);
     }, function() {
-      
+
       var url = uploadTask.snapshot.metadata.downloadURLs[0];
       $('.img-container').append('<img class="uploaded-img" src="'+url+'" >');
       reportData.img = url;
@@ -78,10 +66,12 @@ function imgCounter() {
       console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
       console.log(uploadTask.snapshot.metadata);
       console.log('File available at', url);
-      
-    }); // end anon function after uploadTask
-  }
+
+    });
+  }, "image/jpeg", 0.90);
+}
 
   $('#upload-img').click(function() {
-    saveAsBlob();
+    imgCount +=1;
+    sendCanvasImage(imgCount);
   });
