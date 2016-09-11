@@ -107,9 +107,9 @@ function notification(msg) {
 function retrieveFromDB() {
   var reportsRef = firebase.database().ref('reports/').limitToLast(100);
   reportsRef.on('child_added', function(data) {
+    var lng = data.val().lng
    
-   addReportElement(data.val().lng);
-   retrieveMsgText(data.val().msg);
+   addReportElement(lng);   
   });
 }
 
