@@ -93,23 +93,11 @@ function init() {
 $(function() {
   init();
 });
-function notification(msg) {
-
-  if(window.Notification && Notification.permission !== "denied") {
-    Notification.requestPermission(function(status) {  // status is "granted", if accepted by user
-      var n = new Notification('Title', {
-        body: msg
-      });
-    });
-  }
-
-}
 function retrieveFromDB() {
   var reportsRef = firebase.database().ref('reports/').limitToLast(100);
   reportsRef.on('child_added', function(data) {
-    var lng = data.val().lng
-   
-   addReportElement(lng);   
+    var lng = data.val().lng;
+   addReportElement(lng);
   });
 }
 
