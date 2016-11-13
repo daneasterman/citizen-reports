@@ -6,7 +6,7 @@ Check out the Google Firebase quick start documentation here: [https://firebase.
 
 ## Features
 
-Citizen reports is a real time reporting tool which automatically geolocates reports sent by citizens when a news-worthy incident occurs. 
+Citizen reports is a real time reporting tool which automatically geolocates reports sent by citizens when a newsworthy incident occurs. 
 
 It includes a built-in image compression tool which allows users to quickly upload images to the platform even when mobile internet service is poor. 
 
