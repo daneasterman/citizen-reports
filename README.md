@@ -10,7 +10,7 @@ Citizen reports is a real time reporting tool which automatically geolocates rep
 
 It includes a built-in image compression tool which allows users to quickly upload images to the platform even when mobile internet service is poor. 
 
-For journalists monitoring reports from citizens in the newsroom, there is also a notification feature so they never miss a report - even when the browser window is minimized and withouth the need for a page refresh.
+For journalists monitoring reports from citizens in the newsroom, there is also a notification feature so they never miss a report - even when the browser window is minimized and without the need for a page refresh.
 
 ## Tech
 
